@@ -1,7 +1,7 @@
 # SQL
  This repository hosts all of my TSQL projects.
 
-# CDAEmployment_NormalizationAssignment
+# CanadaEmployment_NormalizationAssignment
 Create a relational database normalized into third normal form. Create new table using a JOIN.
 
 # CheckConstraints_Views_Joins
