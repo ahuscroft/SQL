@@ -2,7 +2,7 @@
  This repository hosts all of my TSQL projects.
 
 # CanadaEmployment_NormalizationAssignment
-Create a relational database normalized into third normal form. Create new table using a JOIN.
+Create a relational database normalized into third normal form. Created a new table using a JOIN. Added a STORED PROCEDURE to delete duplicates.
 
 # CheckConstraints_Views_Joins
 A small sample of SQL code I created while working on the development team of a larger student project.
