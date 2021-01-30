@@ -75,6 +75,31 @@ FROM MonthTable
 DELETE FROM cte
 WHERE row_num>1;
 
+--Code to create a Stored Procedure to delete duplicates--
+CREATE PROCEDURE spDelDup
+@TblParam VARCHAR(30),
+@ColParam NVARCHAR(30)
+AS
+BEGIN
+DECLARE @DelDup NVARCHAR(max)
+SET @DelDup =
+	'WITH CTE AS (
+		SELECT '+@ColParam+', ROW_NUMBER () OVER (
+		PARTITION BY '+@ColParam+'
+		ORDER BY '+@ColParam+'
+		) row_num
+	FROM '+@TblParam+'
+	)
+	DELETE FROM CTE
+	WHERE row_num>1'
+
+EXEC (@DelDup);
+END
+
+--Insert input parameters to execute stored procedure--
+EXEC spDelDup @TblParam =' ', @ColParam=' ';
+
+
 --Codes to achieve 3NF--
 --Alter tables to add new column--
 ALTER TABLE Gender
@@ -242,7 +267,6 @@ WHERE Provinces.EmploymentID = 3 AND Gender.Sex = 'Males' AND YearTable.Year = '
 
 
 --SELECT Statements--
-SELECT * FROM [Cda_employmentrate_1990to1999_RawData];
 SELECT * FROM EmploymentTypeNew;
 SELECT * FROM Provinces;
 SELECT * FROM Gender;
